@@ -16,15 +16,15 @@ class CreateMentorsTable extends Migration
     Schema::create('mentors', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id')->index()->unsigned();
-      $table->string('title', 20);
+      $table->string('title');
       $table->string('occupation',50);
       $table->string('organization',50);
       $table->text('bio');
-      $table->string('country',50);
+      $table->string('country');
       $table->string('city',50);
       $table->integer('phone_number');
-      $table->enum('mentorship_areas', array('IT/Technology', 'Business/Finance'));
-      $table->string('profile_picture',255);
+      $table->enum('mentorship_areas', ['easy', 'hard']);
+      $table->string('profile_picture');
       $table->timestamps();
 
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

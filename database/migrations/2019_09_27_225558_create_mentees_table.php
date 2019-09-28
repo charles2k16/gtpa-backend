@@ -20,11 +20,11 @@ class CreateMenteesTable extends Migration
       $table->string('occupation', 50);
       $table->string('organization', 50);
       $table->longText('bio');
-      $table->string('country', 50);
+      $table->string('country');
       $table->string('city', 50);
       $table->integer('phone_number');
-      $table->enum('mentorship_areas', array('foo', 'bar'));
-      $table->string('profile_picture', 255);
+      $table->enum('mentorship_areas', ['business', 'science']);
+      $table->string('profile_picture');
       $table->timestamps();
 
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

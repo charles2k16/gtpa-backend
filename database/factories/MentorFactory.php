@@ -1,9 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
+use App\Mentor;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,18 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Mentor::class, function (Faker $faker) {
+ 
+
   return [
-    'name' => $faker->name,
-    'email' => $faker->unique()->safeEmail,
-    'email_verified_at' => now(),
-    'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-    'type' => $faker->randomElement([User::ADMIN_USER, User::MENTOR, User::MENTEE]),
-    'remember_token' => Str::random(10),
+    'user_id' => User::all()->random()->id,
+    'title' => $faker->name,
+    'occupation' => $faker->jobTitle(),
+    'organization' => $faker->name,
+    'bio' => $faker->sentence(),
+    'country' => $faker->country(),
+    'city' => $faker->city(),
+    'phone_number' => $faker->numberBetween(0, 9),
+    'profile_picture' => $faker->randomElement(['ben.png', 'charl.png', 'dick.png', 'adjoa.png']),
   ];
 });

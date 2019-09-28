@@ -1,16 +1,36 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Mentor;
+use App\Mentee;
+use App\MentorRequest;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
-    }
+  /**
+   * Seed the application's database.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+    User::truncate();
+    Mentor::truncate();
+    Mentee::truncate();
+    MentorRequest::truncate();
+
+    $usersQuantity = 20;
+    $mentorsQuantity = 10;
+    $menteesQuantity = 4;
+    $requestsQuantity = 3;
+   
+    factory(User::class, $usersQuantity)->create();
+    factory(Mentor::class, $mentorsQuantity)->create();
+    factory(Mentee::class, $menteesQuantity)->create();
+    factory(MentorRequest::class, $requestsQuantity)->create();
+  }
 }
