@@ -29,6 +29,7 @@ $factory->define(Mentor::class, function (Faker $faker) {
     'country' => $faker->country(),
     'city' => $faker->city(),
     'phone_number' => $faker->numberBetween(0, 9),
+    'mentorship_areas' => json_encode(["key" => $faker->randomElement(['ben.png', 'charl.png', 'dick.png', 'adjoa.png'])] ),
     'profile_picture' => $faker->randomElement(['ben.png', 'charl.png', 'dick.png', 'adjoa.png']),
   ];
 });

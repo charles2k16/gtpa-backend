@@ -8,6 +8,11 @@ use App\MentorRequest;
 
 class Mentee extends Model
 {
+
+  protected $casts = [
+    'mentorship_areas' => 'json'
+  ];
+  
   protected $fillable = [
     'user_id',
     'age',

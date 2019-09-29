@@ -19,7 +19,7 @@ class CreateMentorRequestsTable extends Migration
       $table->text('description');
       $table->string('location');
       $table->string('duration');
-      $table->enum('mentorship_areas', ['business', 'hard']);
+      $table->json('mentorship_areas');
       $table->string('status')->index()->default(MentorRequest::PENDING_STATUS);
       $table->integer('mentor_id')->index()->nullable();
       $table->integer('mentee_id')->index()->nullable();

@@ -22,6 +22,7 @@ $factory->define(MentorRequest::class, function (Faker $faker) {
     'description' => $faker->sentence(),
     'location' => $faker->city(),
     'duration' => $faker->word,
+    'mentorship_areas' => json_encode(["key" => $faker->randomElement(['sceince', 'buisness', 'math', 'adjo'])] ),
     'status' => $faker->randomElement([MentorRequest::PENDING_STATUS, MentorRequest::REJECTED_STATUS]),
     'mentor_id' =>  User::all()->random()->id,
     'mentee_id' =>  User::all()->random()->id,

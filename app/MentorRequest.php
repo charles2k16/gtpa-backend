@@ -12,6 +12,11 @@ class MentorRequest extends Model
   const ACCEPTED_STATUS = 'ACCEPTED';
   const REJECTED_STATUS = 'REJECTED';
 
+
+  protected $casts = [
+    'mentorship_areas' => 'json'
+  ];
+  
   protected $fillable = [
     'description',
     'location',
