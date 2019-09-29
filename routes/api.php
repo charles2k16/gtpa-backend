@@ -19,12 +19,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Users
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+Route::resource('users.mentors', 'User\UserMentorController', ['only' => ['index']]);
+Route::resource('users.mentees', 'User\UserMenteeController', ['only' => ['index']]);
 
 // Mentors
 Route::resource('mentors', 'Mentor\MentorController', ['except' => ['create', 'edit']]);
+Route::resource('mentors.request', 'Mentor\MentorRequestController', ['only' => ['index']]);
 
 // Mentees
 Route::resource('mentees', 'Mentee\MenteeController', ['except' => ['create', 'edit']]);
+Route::resource('mentees.request', 'Mentee\MenteeRequestController', ['only' => ['index']]);
 
 // MentorRequest
-Route::resource('mentor_requests', 'MentorRequest\MentorRequestController', ['except' => ['create', 'edit']]);
+Route::resource('requests', 'MentorRequest\MentorRequestController', ['except' => ['create', 'edit']]);

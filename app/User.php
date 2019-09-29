@@ -39,23 +39,19 @@ class User extends Authenticatable
   }
 
   public function profile() {
-    $profile = null;
 
     switch ($this->type) {
       case User::MENTEE:
-        $profile = $this->hasOne(Mentee::class);
+        return $this->hasOne(Mentee::class);
         break;
 
       case User::MENTOR:
-        $profile = $this->hasOne(Mentor::class);
+        return $this->hasOne(Mentor::class);
         break;
 
       default:
-        $profile = null;
         break;
     }
-
-    return $profile;
   }
 
   /**
