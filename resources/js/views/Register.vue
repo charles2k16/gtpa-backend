@@ -25,18 +25,14 @@
                                     <label for="exampleInputEmail1">Password</label>
                                     <input type="passowrd" class="form-control number" placeholder="********" v-model="addMentorForm.password">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Confirm Password</label>
-                                    <input type="passowrd" class="form-control number" placeholder="********" v-model="addMentorForm.password_confirmation">
-                                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="********"></textarea> -->
-                                </div>
+              
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Type</label>
-                                    <input type="text" class="form-control number" v-model="addMentorForm.type" value="Mentor">
+                                    <input type="text" class="form-control number" v-model="addMentorForm.type">
                                     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="********"></textarea> -->
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary red_btn" @click="registerMentor()">Complete</button>
+                                    <button type="button" class="btn btn-primary red_btn" @click="registerUser()">Complete</button>
                                 </div>
                                 
                             </form>
@@ -61,21 +57,30 @@ export default {
   data() { 
     return {
       user_type: this.$route.query.type,
+      storeData: '',
       addMentorForm: {
         name: '',
         email: '',
         password: '',
-        password_confirmation: '',
-        type: 'mentor'
+        type: this.$route.query.type,
       },
     }
   },
   watch: {
     $route: 'updateRoute'
   },
+  computed: {
+    getUserLoggedInData () {
+      return this.$store.state.user
+    }
+  },
   methods: {
     updateRoute () {
       this.user_type = this.$route.query.type
+    },
+    registerUser () {
+     this.$store.state.user = this.addMentorForm
+     console.log(this.$store.state.user)
     }
   }
 }

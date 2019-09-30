@@ -47,6 +47,9 @@ import Footer from './sections/Footer'
 
 export default {
   name: 'Login',
-  components: {Header, Subscribe, Footer}
+  components: {Header, Subscribe, Footer},
+  created () {
+    console.log(this.$store.state.user)
+  }
 }
 </script>
