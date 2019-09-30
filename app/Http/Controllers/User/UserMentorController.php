@@ -15,7 +15,7 @@ class UserMentorController extends Controller
    */
   public function index(User $user)
   {
-    $users = $user->profile;
+    $users = $user->profile()->with('user')->get();
     return ['usersMentor' => $users];
   }
 }

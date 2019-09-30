@@ -16,7 +16,7 @@ class MentorRequestController extends Controller
     public function index()
     {
       $mentorRequest = MentorRequest::all();
-      return ['mentor' => $mentorRequest];
+      return ['requests' => $mentorRequest];
     }
 
     /**
@@ -29,7 +29,6 @@ class MentorRequestController extends Controller
     {
       $rules = [
         'mentee_id' => 'required',
-        'mentorship_areas' => 'required',
         'commencement_date' => 'required',
         'duration' => 'required',
       ];
@@ -52,7 +51,8 @@ class MentorRequestController extends Controller
      */
     public function show($id)
     {
-        //
+      $request = MentorRequest::findOrFail($id);
+      return ['request' => $request];
     }
 
     /**
@@ -75,6 +75,8 @@ class MentorRequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $request = MentorRequest::findOrFail($id);
+      $request->delete();
+      return ['user' => $request];
     }
 }
