@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <h2 class="big_title">{{title}}</h2>
+                <h2 class="big_title">{{user_type}} Registrtion</h2>
 
             </div>
             <div class="col-md-6">
@@ -58,23 +58,24 @@ import Footer from './sections/Footer'
 export default {
   name: 'Register',
   components: {Header, Subscribe, Footer},
-  data: () => ({
-    title: 'Mentor Registration',
-    addMentorForm: {
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      type: 'mentor'
-    },
-  }),
-  created () {
-    console.log( this.$route.query.type)
+  data() { 
+    return {
+      user_type: this.$route.query.type,
+      addMentorForm: {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        type: 'mentor'
+      },
+    }
+  },
+  watch: {
+    $route: 'updateRoute'
   },
   methods: {
-    registerMentor () {
-      console.log(this.addMentorForm)
-      this.$router.push({ path: '/welcome', query: { id: this.addMentorForm.name} })
+    updateRoute () {
+      this.user_type = this.$route.query.type
     }
   }
 }

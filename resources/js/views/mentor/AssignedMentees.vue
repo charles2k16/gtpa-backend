@@ -33,9 +33,10 @@
 <script>
 import AuthHeader from '../sections/AuthHeader'
 import MenteeListCard from '../../components/MenteeListCard'
+import Footer from '../sections/Footer'
 
 export default {
   name: 'AssignedMentee',
-  components: {MenteeListCard,AuthHeader}
+  components: {MenteeListCard,AuthHeader, Footer}
 }
 </script>

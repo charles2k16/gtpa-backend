@@ -2263,7 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: 'Mentor Registration',
+      user_type: this.$route.query.type,
       addMentorForm: {
         name: '',
         email: '',
@@ -2273,18 +2273,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  created: function created() {
-    console.log(this.$route.query.type);
+  watch: {
+    $route: 'updateRoute'
   },
   methods: {
-    registerMentor: function registerMentor() {
-      console.log(this.addMentorForm);
-      this.$router.push({
-        path: '/welcome',
-        query: {
-          id: this.addMentorForm.name
-        }
-      });
+    updateRoute: function updateRoute() {
+      this.user_type = this.$route.query.type;
     }
   }
 });
@@ -2355,6 +2349,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sections_AuthHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sections/AuthHeader */ "./resources/js/views/sections/AuthHeader.vue");
 /* harmony import */ var _components_MenteeListCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/MenteeListCard */ "./resources/js/components/MenteeListCard.vue");
+/* harmony import */ var _sections_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sections/Footer */ "./resources/js/views/sections/Footer.vue");
 //
 //
 //
@@ -2387,13 +2382,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AssignedMentee',
   components: {
     MenteeListCard: _components_MenteeListCard__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AuthHeader: _sections_AuthHeader__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AuthHeader: _sections_AuthHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Footer: _sections_Footer__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -2602,13 +2599,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Header',
   data: function data() {
     return {
-      typeMentor: 'Mentor Registration',
-      typeMentee: 'Mentee Registration'
+      user_type: ['Mentor', 'Mentee']
     };
   },
   methods: {
@@ -2621,15 +2616,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    menteeRegister: function menteeRegister() {
-      var self = this;
-      this.$router.push({
-        path: 'register',
-        query: {
-          type: self.typeMentee
-        }
-      });
-    }
+    menteeRegister: function menteeRegister() {}
   }
 });
 
@@ -38863,7 +38850,7 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-5" }, [
               _c("h2", { staticClass: "big_title" }, [
-                _vm._v(_vm._s(_vm.title))
+                _vm._v(_vm._s(_vm.user_type) + " Registrtion")
               ])
             ]),
             _vm._v(" "),
@@ -39625,56 +39612,50 @@ var render = function() {
               attrs: { id: "navbarNavDropdown" }
             },
             [
-              _c("ul", { staticClass: "navbar-nav" }, [
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c("router-link", { attrs: { to: "/" } }, [
-                      _c(
-                        "a",
-                        { staticClass: "nav-link", attrs: { href: "" } },
-                        [_vm._v("Home")]
-                      )
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item active",
-                    on: {
-                      click: function($event) {
-                        return _vm.mentorRegister()
-                      }
-                    }
-                  },
-                  [
-                    _c("a", { staticClass: "nav-link" }, [
-                      _vm._v("Register as Mentor")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.menteeRegister()
-                      }
-                    }
-                  },
-                  [
-                    _c("a", { staticClass: "nav-link" }, [
-                      _vm._v("Register as Mentee")
-                    ])
-                  ]
-                )
-              ])
+              _c(
+                "ul",
+                { staticClass: "navbar-nav" },
+                [
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c("router-link", { attrs: { to: "/" } }, [
+                        _c(
+                          "a",
+                          { staticClass: "nav-link", attrs: { href: "" } },
+                          [_vm._v("Home")]
+                        )
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.user_type, function(types, index) {
+                    return _c(
+                      "li",
+                      { key: index, staticClass: "nav-item active" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: { name: "Register", query: { type: types } }
+                            }
+                          },
+                          [
+                            _c("a", { staticClass: "nav-link" }, [
+                              _vm._v("Register as " + _vm._s(types))
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
             ]
           )
         ]

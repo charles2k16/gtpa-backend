@@ -39,11 +39,10 @@
               <a class="nav-link" href="">Home</a>
               </router-link>
             </li>
-            <li class="nav-item active" @click="mentorRegister()">
-              <a class="nav-link" >Register as Mentor</a>
-            </li>
-            <li class="nav-item"  @click="menteeRegister()">
-              <a class="nav-link">Register as Mentee</a>
+            <li class="nav-item active" v-for="(types, index) in user_type" :key="index">
+              <router-link :to="{name: 'Register', query: {type: types}}">
+                <a class="nav-link" >Register as {{types}}</a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -57,8 +56,7 @@
 export default {
   name: 'Header',
   data: () => ({
-    typeMentor: 'Mentor Registration',
-    typeMentee: 'Mentee Registration'
+    user_type: ['Mentor', 'Mentee'],
   }),
   methods: {
     mentorRegister () {
@@ -66,8 +64,8 @@ export default {
       this.$router.push({ path: 'register', query: { type: self.typeMentor} })
     },
     menteeRegister () {
-      let self = this
-      this.$router.push({ path: 'register', query: { type: self.typeMentee} })
+     
+   
     }
   }
 }
