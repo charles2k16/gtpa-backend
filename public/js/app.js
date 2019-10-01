@@ -2024,7 +2024,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2283,6 +2282,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateRoute: function updateRoute() {
       this.user_type = this.$route.query.type;
+      this.addMentorForm.type = this.$route.query.type;
     },
     registerUser: function registerUser() {
       this.$store.state.user = this.addMentorForm;
@@ -2553,20 +2553,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -38349,120 +38335,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Header"),
-      _vm._v(" "),
-      _c("section", { staticClass: "inner_wrap form_wrap registration_wrap" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-5" }, [
-              _c("h2", { staticClass: "big_title" }, [_vm._v("Login")]),
-              _vm._v(" "),
-              _c(
-                "h6",
-                [
-                  _vm._v("Don't have an Account? You can "),
-                  _c("router-link", { attrs: { to: "/register" } }, [
-                    _vm._v("click here to register ")
-                  ]),
-                  _vm._v(" and sign up as a Mentor or Mentee")
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("Subscribe"),
-      _vm._v(" "),
-      _c("Footer")
-    ],
-    1
-  )
+  return _c("div", [_c("Subscribe"), _vm._v(" "), _c("Footer")], 1)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "contact_form" }, [
-        _c("form", [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-              _vm._v("Email Address")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "email",
-                id: "exampleInputEmail1",
-                "aria-describedby": "emailHelp",
-                placeholder: "example@mail.com"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-              _vm._v("Password")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control number",
-              attrs: { type: "passowrd", placeholder: "********" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group form-check" }, [
-            _c(
-              "div",
-              { staticClass: "custom-control custom-checkbox mr-sm-2" },
-              [
-                _c("input", {
-                  staticClass: "custom-control-input",
-                  attrs: { type: "checkbox", id: "customControlAutosizing" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "custom-control-label",
-                    attrs: { for: "customControlAutosizing" }
-                  },
-                  [_vm._v("Remember me")]
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary red_btn",
-                attrs: { type: "button" }
-              },
-              [_vm._v("Login")]
-            ),
-            _vm._v(" "),
-            _c("span", { staticClass: "forgot_pass" }, [
-              _c("a", { attrs: { href: "reset.php" } }, [
-                _vm._v("Forgot Password?")
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

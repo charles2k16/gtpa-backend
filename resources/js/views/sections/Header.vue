@@ -16,21 +16,7 @@
             <span class="login"><i class="fas fa-user"></i></span>
             </router-link>
           </a>
-        
-        
-
-        <!-- <div class="nav-item" id="account">
-              <div class="nav-item dropdown">
-            <a href="" class="in nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="image"><img src="images/profile_pic.jpg"></span>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php"><i class="far fa-user menu_icon"></i>Account</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt menu_icon"></i>Logout</a>
-            </div>
-        </div>
-        </div> -->
+  
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">

@@ -62,7 +62,7 @@ export default {
         name: '',
         email: '',
         password: '',
-        type: this.$route.query.type,
+        type: this.$route.query.type
       },
     }
   },
@@ -77,6 +77,7 @@ export default {
   methods: {
     updateRoute () {
       this.user_type = this.$route.query.type
+      this.addMentorForm.type = this.$route.query.type
     },
     registerUser () {
      this.$store.state.user = this.addMentorForm

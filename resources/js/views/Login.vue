@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Header />
-    <section class="inner_wrap form_wrap registration_wrap">
+    <!-- <section class="inner_wrap form_wrap registration_wrap">
       <div class="container">
         <div class="row">
           <div class="col-md-5">
@@ -34,7 +33,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <Subscribe />
     <Footer />
   </div>
