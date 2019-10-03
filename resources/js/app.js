@@ -2,8 +2,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import router from './router'
-import {store} from './store'
 
 // Vue.component(
 //   'passport-clients',
@@ -24,6 +22,4 @@ Vue.component('main-container', require('./containers/MainContainer.vue').defaul
 
 const app = new Vue({
   el: '#app',
-  router,
-  store
 });

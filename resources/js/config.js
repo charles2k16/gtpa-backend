@@ -14,5 +14,8 @@ export default {
   USERS_URL: API_URL + 'users',
   MENTORS_URL: API_URL + 'mentors',
   MENTEES_URL: API_URL + 'mentees',
-  REQUESTS_URL: API_URL + 'requests'
+  REQUESTS_URL: API_URL + 'requests',
+  LOGIN_URL: API_URL + 'login',
+  REGISTER_URL: API_URL + 'register',
+  LOGGED_IN_USER_URL: API_URL + 'currentuser'
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="body_container">
-    <router-view></router-view>
+  <div>
+    <h3>dcdd</h3>
   </div>
 </template>
 
