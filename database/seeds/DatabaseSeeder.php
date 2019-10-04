@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
     Mentee::truncate();
     MentorRequest::truncate();
 
-    $usersQuantity = 20;
-    $mentorsQuantity = 10;
-    $menteesQuantity = 4;
-    $requestsQuantity = 3;
+    $usersQuantity = 2;
+    $mentorsQuantity = 1;
+    $menteesQuantity = 1;
+    $requestsQuantity = 1;
    
     factory(User::class, $usersQuantity)->create();
     factory(Mentor::class, $mentorsQuantity)->create();

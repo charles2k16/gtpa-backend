@@ -35,7 +35,6 @@ class MentorController extends Controller
       'country' => 'required',
       'city' => 'required',
       'phone_number' => 'required',
-      'profile_picture' => 'required',
     ];
     // We validate the request and the rules
     $this->validate($request, $rules);
