@@ -30,8 +30,7 @@ class UserController extends Controller
   public function store(Request $request)
   {
     $rules = [
-      'first_name' => 'required',
-      'last_name' => 'required',
+      'name' => 'required',
       'email' => 'required|email|unique:users',
       'password' => 'required|min:6'
     ];
@@ -71,7 +70,7 @@ class UserController extends Controller
   {
     $user = User::findOrFail($id);
     $this-> validate($request, [
-      'first_name' => 'string|max:191',
+      'name' => 'string|max:191',
       'email' => 'email|max:191|unique:users,email,'.$user->id,
       'password' => 'sometimes|string|min:6'
     ]);

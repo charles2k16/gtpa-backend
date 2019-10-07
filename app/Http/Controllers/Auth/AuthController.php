@@ -21,12 +21,14 @@ class AuthController extends Controller
     $this->validate($request, [
       'name' => 'required|min:3',
       'email' => 'required|email|unique:users',
+      'type' => 'required',
       'password' => 'required|min:6',
     ]);
 
     $user = User::create([
       'name' => $request->name,
       'email' => $request->email,
+      'type' => $request->type,
       'password' =>  Hash::make($request['password'])
     ]);
 
@@ -67,5 +69,22 @@ class AuthController extends Controller
   {
     $user = Auth::user();
     return response()->json(['user' => $user], 200);
+  }
+
+
+
+   /**
+   * Handles Logout Request
+   *
+   * @param Request $request
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function logout(Request $request) {
+
+    $token = $request->user()->token();
+    $token->revoke();
+
+    $response = 'You have been succesfully logged out!';
+    return response()->json(['response' => $response], 200);
   }
 }
