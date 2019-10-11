@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
       $table->increments('id');
       $table->string('name');
       $table->string('email')->unique();
+      $table->integer('requests');
+      $table->boolean('sent_a_request')->default(false);
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');
       $table->string('type')->default(User::MENTOR);

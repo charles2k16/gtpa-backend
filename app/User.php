@@ -19,12 +19,12 @@ class User extends Authenticatable
    * @var array
    */
 
-  const ADMIN_USER = 'admin';
-  const MENTOR = 'mentor';
-  const MENTEE = 'mentee';
+  const ADMIN_USER = 'Admin';
+  const MENTOR = 'Mentor';
+  const MENTEE = 'Mentee';
 
   protected $fillable = [
-    'name', 'email', 'password', 'type'
+    'name', 'email', 'requests', 'sent_a_request', 'password', 'type'
   ];
 
   public function isAdmin() {
@@ -71,5 +71,6 @@ class User extends Authenticatable
    */
   protected $casts = [
     'email_verified_at' => 'datetime',
+    "sent_a_requests" => "boolean",
   ];
 }
