@@ -15,7 +15,7 @@ class MentorRequestController extends Controller
      */
     public function index()
     {
-      $mentorRequest = MentorRequest::with('mentee')->get();
+      $mentorRequest = MentorRequest::with('mentee','mentor')->get();
       // with('mentee')->get()
       return ['requests' => $mentorRequest];
     }
@@ -42,7 +42,7 @@ class MentorRequestController extends Controller
       // Lets now set our default data from the request
   
       $mentorRequest = MentorRequest::create($data);
-      return ['mentee' => $mentorRequest];
+      return ['request' => $mentorRequest];
     }
 
     /**
@@ -66,7 +66,13 @@ class MentorRequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $userRequest = MentorRequest::findOrFail($id);
+      $this-> validate($request, [
+        'status' => 'string'
+      ]);
+
+      $userRequest->update($request->all());
+      return ['request' => $userRequest];
     }
 
     /**
@@ -79,6 +85,6 @@ class MentorRequestController extends Controller
     {
       $request = MentorRequest::findOrFail($id);
       $request->delete();
-      return ['user' => $request];
+      return ['request' => $request];
     }
 }
