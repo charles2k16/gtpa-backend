@@ -16,7 +16,9 @@ class CreateMenteesTable extends Migration
     Schema::create('mentees', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id')->index()->unsigned();
-      $table->tinyInteger('age');
+      $table->date('age');
+      $table->string('name');
+      $table->string('title');
       $table->string('occupation', 50);
       $table->string('organization', 50);
       $table->longText('bio');

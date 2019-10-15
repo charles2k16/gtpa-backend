@@ -15,6 +15,8 @@ class Mentor extends Model
   
   protected $fillable = [
     'user_id',
+    'age',
+    'name',
     'title',
     'occupation',
     'organization',

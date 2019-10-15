@@ -16,6 +16,8 @@ class CreateMentorsTable extends Migration
     Schema::create('mentors', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('user_id')->index()->unsigned();
+      $table->date('age');
+      $table->string('name');
       $table->string('title');
       $table->string('occupation',50);
       $table->string('organization',50);

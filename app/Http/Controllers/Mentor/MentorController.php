@@ -16,7 +16,7 @@ class MentorController extends Controller
    */
   public function index()
   {
-    $mentors = Mentor::all();
+    $mentors = Mentor::with('user')->get();
     return ['mentors' => $mentors];
   }
 
