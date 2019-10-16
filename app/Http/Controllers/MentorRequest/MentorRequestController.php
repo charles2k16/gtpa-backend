@@ -15,7 +15,7 @@ class MentorRequestController extends Controller
      */
     public function index()
     {
-      $mentorRequest = MentorRequest::with('mentee','mentor')->get();
+      $mentorRequest = MentorRequest::all();
       // with('mentee')->get()
       return ['requests' => $mentorRequest];
     }
