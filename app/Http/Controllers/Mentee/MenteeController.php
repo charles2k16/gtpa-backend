@@ -42,7 +42,7 @@ class MenteeController extends Controller
       $name = time().'.' . explode('/', explode(':', substr($request->profile_picture, 0, strpos($request->profile_picture, ';')))[1])[1];
       \Image::make($request->profile_picture)->save(public_path('img/profile/').$name);
 
-      $request->merge(['profile_picture' => $name]);
+      // $request->merge(['profile_picture' => $name]);
     }
 
     $data = $request->all();
@@ -80,8 +80,6 @@ class MenteeController extends Controller
     if($request->profile_picture !== $mentee->profile_picture) {
       $name = time().'.' . explode('/', explode(':', substr($request->profile_picture, 0, strpos($request->profile_picture, ';')))[1])[1];
       \Image::make($request->profile_picture)->save(public_path('img/profile/').$name);
-
-      $request->merge(['profile_picture' => $name]);
 
       $currentPhoto = public_path('img/profile/').$mentee->profile_picture;
       if(file_exists($currentPhoto)) {
