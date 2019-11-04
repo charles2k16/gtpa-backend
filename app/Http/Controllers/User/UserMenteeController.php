@@ -15,7 +15,7 @@ class UserMenteeController extends Controller
    */
   public function index(User $user)
   {
-    $users = $user->profile;
-    return ['usersMentor' => $users];
+    $users = $user->profile()->with('user')->get();
+    return ['user' => $users];
   }
 }
