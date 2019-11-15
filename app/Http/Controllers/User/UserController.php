@@ -74,6 +74,20 @@ class UserController extends Controller
       'email' => 'email|max:191|unique:users,email,'.$user->id,
       'password' => 'sometimes|string|min:6'
     ]);
+
+    $currentPhoto = $user->pic;
+
+    if($request->pic !== $currentPhoto) {
+      $name = time().'.' . explode('/', explode(':', substr($request->pic, 0, strpos($request->pic, ';')))[1])[1];
+      \Image::make($request->pic)->save(public_path('img/profile/').$name);
+
+      $request->merge(['pic' => url('/').'/img/profile/'.$name]);
+
+      if(file_exists($currentPhoto)) {
+        @unlink($currentPhoto);
+      }
+    }
+
     $user->update($request->all());
     return ['user' => $user];
   }
