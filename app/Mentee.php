@@ -25,7 +25,6 @@ class Mentee extends Model
     'city',
     'phone_number',
     'mentorship_areas',
-    'profile_picture'
   ];
 
   public function user() {

@@ -38,13 +38,6 @@ class MentorController extends Controller
     ];
     // We validate the request and the rules
     $this->validate($request, $rules);
-
-    if($request->profile_picture) {
-      $name = time().'.' . explode('/', explode(':', substr($request->profile_picture, 0, strpos($request->profile_picture, ';')))[1])[1];
-      \Image::make($request->profile_picture)->save(public_path('img/profile/').$name);
-
-      $request->merge(['profile_picture' => url('/').'/img/profile/'.$name]);
-    }
     
     $data = $request->all();
 
