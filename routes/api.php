@@ -18,6 +18,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
   Route::post('login', 'Auth\AuthController@login');
   Route::post('register', 'Auth\AuthController@register');
+  Route::resource('mentors', 'Mentor\MentorController', ['except' => ['create', 'edit']]);
 
   Route::middleware('auth:api')->group(function () {
     Route::get('currentuser', 'Auth\AuthController@currentuser');
@@ -33,7 +34,7 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::resource('users.mentors', 'User\UserMentorController', ['only' => ['index']]);
     Route::resource('users.mentees', 'User\UserMenteeController', ['only' => ['index']]);
 
-    Route::resource('mentors', 'Mentor\MentorController', ['except' => ['create', 'edit']]);
+
     Route::resource('mentors.request', 'Mentor\MentorRequestController', ['only' => ['index']]);
 
     Route::resource('mentees', 'Mentee\MenteeController', ['except' => ['create', 'edit']]);

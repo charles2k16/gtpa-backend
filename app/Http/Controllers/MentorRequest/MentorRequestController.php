@@ -15,7 +15,7 @@ class MentorRequestController extends Controller
      */
     public function index()
     {
-      $mentorRequest = MentorRequest::with('mentee')->get();
+      $mentorRequest = MentorRequest::with('mentee', 'mentor')->get();
       // with('mentee')->get()
       return ['requests' => $mentorRequest];
     }
@@ -29,10 +29,7 @@ class MentorRequestController extends Controller
     public function store(Request $request)
     {
       $rules = [
-        'mentee_id' => 'required',
         'commencement_date' => 'required',
-        'location' => 'required',
-        'duration' => 'required',
       ];
       // We validate the request and the rules
       $this->validate($request, $rules);

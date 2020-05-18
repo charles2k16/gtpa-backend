@@ -17,9 +17,7 @@ class CreateMentorRequestsTable extends Migration
     Schema::create('mentor_requests', function (Blueprint $table) {
       $table->increments('id');
       $table->text('description');
-      $table->string('location');
       $table->string('duration');
-      $table->json('mentorship_areas');
       $table->string('status')->index()->default(MentorRequest::PENDING_STATUS);
       $table->integer('mentor_id')->index()->nullable();
       $table->integer('mentee_id')->index()->nullable();

@@ -37,6 +37,7 @@ class CreateMentorsTable extends Migration
       $table->string('explain');
       $table->string('why_do_you_want_to_mentor');
       $table->integer('phone_number');
+      $table->string('pic');
       $table->json('mentorship_areas');
       $table->timestamps();
     });

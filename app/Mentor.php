@@ -36,6 +36,7 @@ class Mentor extends Model
     'years_of_exp',
     'why_do_you_want_to_mentor',
     'phone_number',
+    'pic',
     'mentorship_areas',
   ];
 
