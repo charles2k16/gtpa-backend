@@ -21,6 +21,7 @@ class CreateMenteesTable extends Migration
       $table->string('firstName');
       $table->string('lastName');
       $table->string('address');
+      $table->string('email');
       $table->string('source');
       $table->string('education');
       $table->string('qualification');
@@ -39,6 +40,7 @@ class CreateMenteesTable extends Migration
       $table->string('state',50);
       $table->string('postCode');
       $table->string('explain');
+      $table->string('pic');
       $table->integer('phone_number');
       $table->json('mentorship_areas');
       $table->timestamps();

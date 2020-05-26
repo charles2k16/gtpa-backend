@@ -20,6 +20,7 @@ class Mentee extends Model
     'firstName',
     'lastName',
     'address',
+    'email',
     'title',
     'occupation',
     'organization',
@@ -38,6 +39,7 @@ class Mentee extends Model
     'source',
     'mentored_before',
     'explain',
+    'pic',
     'phone_number',
     'mentorship_areas',
   ];

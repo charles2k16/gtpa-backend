@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use App\Mentor;
 use App\Mentee;
+use App\Message;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,10 @@ class User extends Authenticatable
 
   public function isMentee() {
     return $this->type == User::MENTEE;
+  }
+
+  public function messages() {
+    return $this->hasMany(Message::class);
   }
 
   public function profile() {

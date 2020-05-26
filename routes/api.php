@@ -33,7 +33,9 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
     Route::resource('users.mentors', 'User\UserMentorController', ['only' => ['index']]);
     Route::resource('users.mentees', 'User\UserMenteeController', ['only' => ['index']]);
-
+    Route::resource('messages', 'Message\MessageController', ['only' => ['index']]);
+    Route::resource('messages', 'Message\MessageController', ['only' => ['store']]);
+    Route::get('conversation/{id}', 'Message\MessageController@getMessageFor');
 
     Route::resource('mentors.request', 'Mentor\MentorRequestController', ['only' => ['index']]);
 

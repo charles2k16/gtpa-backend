@@ -21,6 +21,7 @@ class CreateMentorsTable extends Migration
       $table->string('firstName');
       $table->string('lastName');
       $table->string('address');
+      $table->string('email');
       $table->string('title');
       $table->string('occupation',50);
       $table->string('organization',50);
