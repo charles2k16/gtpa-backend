@@ -45,7 +45,7 @@ class MessageController extends Controller
    */
   public function getMessageFor($id)
   {
-    $messages = Message::where('user_id', $id)->orWhere('to', $id)->get();
+    $messages = Message::where('user_id', $id)->orWhere('receiver_id', $id)->get();
     return ['messages' => $messages];
   }
 
