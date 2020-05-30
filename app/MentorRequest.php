@@ -21,14 +21,12 @@ class MentorRequest extends Model
     'description',
     'location',
     'duration',
-    'mentorship_areas',
     'status',
     'mentor_id',
     'mentee_id',
     'commencement_date',
     'reasons_for_reject'
   ];
-
 
   public function isAccepted() {
     return $this->status == MentorRequest::ACCEPTED_STATUS;

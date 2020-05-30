@@ -52,9 +52,12 @@ class MessageController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function getMessageFor($id)
+  public function getMessageFor(Request $request)
   {
-    $messages = Message::where('user_id', $id)->orWhere('receiver_id', $id)->get();
+    $userId = $request->input('id');
+    $authUserId = $request->user()->id;
+
+    $messages = Message::whereIn('user_id', [$authUserId,$userId])->whereIn('receiver_id', [$authUserId,$userId])->orderBy('created_at', 'asc')->get();
     return ['messages' => $messages];
   }
 
