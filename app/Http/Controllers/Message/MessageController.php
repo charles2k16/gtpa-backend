@@ -28,11 +28,20 @@ class MessageController extends Controller
    */
   public function store(Request $request)
   {
-    $message = $request->user()->messages()->create([
-      'message' => $request->message
-    ]);
+    $receiver_id = $request->input('receiver_id');
+    $chatText = $request->input('message');
 
-    broadcast(new MessageSent($message))->toOthers();
+    $data = [
+      'receiver_id' => $receiver_id,
+      'message' => $chatText
+    ];
+    
+    // $chat = Message::create($data);
+    // $message = Message::where('id', $chat->id)->first();
+
+    $message = $request->user()->messages()->create($data);
+
+    event(new MessageSent($message));
 
     return ['message' => $message];
   }
