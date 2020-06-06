@@ -30,8 +30,6 @@ class MentorController extends Controller
   {
     $rules = [
       'user_id' => 'required',
-      'occupation' => 'required',
-      'organization' => 'required',
       'country' => 'required',
       'city' => 'required',
       'phone_number' => 'required',
