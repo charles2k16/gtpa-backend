@@ -25,7 +25,7 @@ class User extends Authenticatable
   const MENTEE = 'Mentee';
 
   protected $fillable = [
-    'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic'
+    'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic', 'last_active'
   ];
 
   public function isAdmin() {
