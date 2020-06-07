@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Feedback;
 use App\MentorRequest;
 
 class Mentee extends Model
@@ -50,5 +51,9 @@ class Mentee extends Model
 
   public function requests() {
     return $this->hasOne(MentorRequest::class);
+  }
+
+  public function feedbacks() {
+    return $this->hasMany(Feedback::class);
   }
 }
