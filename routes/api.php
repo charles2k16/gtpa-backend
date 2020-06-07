@@ -38,6 +38,7 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::resource('messages', 'Message\MessageController', ['only' => ['store']]);
 
     Route::post('conversation', 'Message\MessageController@getMessageFor');
+    Route::get('dashboard_reports', 'Dashboard\DashboardController@index');
 
     Route::resource('feedbacks', 'Feedback\FeedbackController', ['except' => ['create', 'edit']]);
 
