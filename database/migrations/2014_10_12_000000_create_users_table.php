@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
       $table->string('type')->nullable();
       $table->string('pic')->default("https://via.placeholder.com/150");
       $table->timestamp('last_active');
+      $table->boolean('suspended')->default(false);
       $table->rememberToken();
       $table->timestamps();
     });

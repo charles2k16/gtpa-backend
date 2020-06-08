@@ -20,7 +20,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('mentee_id')->index()->nullable();
             $table->text('mentor_feedback')->nullable();
             $table->text('mentee_feedback')->nullable();
-            $table->integer('sent');
+            $table->boolean('sent')->default(false);
             $table->timestamps();
         });
     }
