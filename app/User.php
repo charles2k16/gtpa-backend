@@ -9,6 +9,7 @@ use Laravel\Passport\HasApiTokens;
 use App\Mentor;
 use App\Mentee;
 use App\Message;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,10 @@ class User extends Authenticatable
 
   public function messages() {
     return $this->hasMany(Message::class);
+  }
+
+  public function posts () {
+    return $this->hasMany(Post::class);
   }
 
   public function profile() {

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Feedback;
+namespace App\Http\Controllers\Post;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Feedback;
 
-class FeedbackController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,17 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-      $feedbacks = Feedback::with('mentee', 'mentor')->get();
-      return ['feedbacks' => $feedbacks];
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -27,18 +35,7 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-      $mentor = $request->input('mentor_id');
-      $mentee = $request->input('mentee_id');
-      $sent = $request->input('sent');
-
-      $data = [
-        'mentor_id' => $mentor,
-        'mentee_id' => $mentee,
-        'sent' => $sent
-      ];
-
-      $feedback = Feedback::create($data);
-      return ['request' => $feedback];
+        //
     }
 
     /**
@@ -52,6 +49,16 @@ class FeedbackController extends Controller
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -73,8 +80,6 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-      $feedback = Feedback::findOrFail($id);
-      $feedback->delete();
-      return ['feedback' => $feedback];
+        //
     }
 }

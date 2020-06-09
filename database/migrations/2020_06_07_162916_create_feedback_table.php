@@ -14,9 +14,8 @@ class CreateFeedbackTable extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('mentor_id')->index()->nullable();
-            $table->integer('mentee_id')->index()->nullable();
             $table->integer('mentee_id')->index()->nullable();
             $table->text('mentor_feedback')->nullable();
             $table->text('mentee_feedback')->nullable();

@@ -10,9 +10,9 @@ use App\MentorRequest;
 class Mentor extends Model
 {
 
-  protected $casts = [
-    'mentorship_areas' => 'json'
-  ];
+  // protected $casts = [
+  //   'mentorship_areas' => 'json'
+  // ];
   
   protected $fillable = [
     'user_id',
@@ -32,10 +32,11 @@ class Mentor extends Model
     'postCode',
     'source',
     'mentored_before',
-    'explain',
+    'if_yes_explain',
     'expertise',
     'industry',
     'years_of_exp',
+    'support_on_how_to_mentor',
     'why_do_you_want_to_mentor',
     'phone_number',
     'pic',

@@ -12,6 +12,10 @@ class Feedback extends Model
     'mentor_id', 'mentee_id', 'mentor_feedback', 'mentee_feedback', 'sent'
   ];
 
+  protected $casts = [
+    "sent" => "boolean",
+  ];
+
   public function mentee() {
     return $this->belongsTo(Mentee::class);
   }
