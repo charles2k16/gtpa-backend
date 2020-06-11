@@ -26,7 +26,7 @@ class User extends Authenticatable
   const MENTEE = 'Mentee';
 
   protected $fillable = [
-    'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic', 'last_active'
+    'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic', 'last_active', 'suspended'
   ];
 
   public function isAdmin() {
@@ -81,6 +81,7 @@ class User extends Authenticatable
    */
   protected $casts = [
     'email_verified_at' => 'datetime',
-    "sent_a_requests" => "boolean",
+    "sent_a_request" => "boolean",
+    "suspended" => "boolean",
   ];
 }

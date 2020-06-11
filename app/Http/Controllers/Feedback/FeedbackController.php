@@ -38,7 +38,7 @@ class FeedbackController extends Controller
       ];
 
       $feedback = Feedback::create($data);
-      return ['request' => $feedback];
+      return ['feedback' => $feedback];
     }
 
     /**
@@ -62,7 +62,10 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $feedback = Feedback::findOrFail($id);
+
+      $feedback->update($request->all());
+      return ['feedback' => $feedback];
     }
 
     /**

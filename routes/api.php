@@ -18,7 +18,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
   Route::post('login', 'Auth\AuthController@login');
   Route::post('register', 'Auth\AuthController@register');
-  Route::resource('mentors', 'Mentor\MentorController', ['except' => ['create', 'edit']]);
+  Route::resource('mentors', 'Mentor\MentorController', ['only' => ['index', 'show']]);
 
   Route::middleware('auth:api')->group(function () {
     Route::get('currentuser', 'Auth\AuthController@currentuser');
@@ -30,24 +30,42 @@ Route::group(['middleware' => ['json.response']], function () {
   });
 
   Route::middleware('auth:api')->group(function () {
+
+    // users
     Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
     Route::resource('users.mentors', 'User\UserMentorController', ['only' => ['index']]);
     Route::resource('users.mentees', 'User\UserMenteeController', ['only' => ['index']]);
 
+    // messages
     Route::resource('messages', 'Message\MessageController', ['only' => ['index']]);
     Route::resource('messages', 'Message\MessageController', ['only' => ['store']]);
-
     Route::post('conversation', 'Message\MessageController@getMessageFor');
+
+    // dashboard
     Route::get('dashboard_reports', 'Dashboard\DashboardController@index');
 
+    // feedback
     Route::resource('feedbacks', 'Feedback\FeedbackController', ['except' => ['create', 'edit']]);
 
+    // mentors
+    Route::resource('mentors', 'Mentor\MentorController', ['only' => ['update', 'destroy', 'store']]);
     Route::resource('mentors.request', 'Mentor\MentorRequestController', ['only' => ['index']]);
+    Route::resource('mentors.feedback', 'Mentor\MentorFeedbackController', ['only' => ['index']]);
 
+    // mentees
     Route::resource('mentees', 'Mentee\MenteeController', ['except' => ['create', 'edit']]);
     Route::resource('mentees.request', 'Mentee\MenteeRequestController', ['only' => ['index']]);
+    Route::resource('mentees.feedback', 'Mentee\MenteeFeedbackController', ['only' => ['index']]);
 
+    // requests
     Route::resource('requests', 'MentorRequest\MentorRequestController', ['except' => ['create', 'edit']]);
+
+    // posts
+    Route::resource('posts', 'Post\PostController', ['except' => ['create', 'edit']]);
+
+    // category
+    Route::resource('categories', 'Category\CategoryController', ['except' => ['create', 'edit']]);
+
   });
   
 });

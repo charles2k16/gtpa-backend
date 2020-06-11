@@ -29,10 +29,7 @@ class MentorController extends Controller
   public function store(Request $request)
   {
     $rules = [
-      'user_id' => 'required',
-      'country' => 'required',
-      'city' => 'required',
-      'phone_number' => 'required',
+      'user_id' => 'required'
     ];
     // We validate the request and the rules
     $this->validate($request, $rules);

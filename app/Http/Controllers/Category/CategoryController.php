@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
+use App\Category;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -15,9 +15,10 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::all();
-    return ['posts' => $posts];
+    $categories = Category::all();
+    return ['categories' => $categories];
   }
+
 
   /**
    * Store a newly created resource in storage.
@@ -28,16 +29,13 @@ class PostController extends Controller
   public function store(Request $request)
   {
     $rules = [
-      'title' => 'required',
-      'sub_content' => 'required',
-      'content' => 'required',
+      'name' => 'required',
+      'description' => 'required'
     ];
     $this->validate($request, $rules);
 
-    $data = $request->all();
-
-    $post = Post::create($data);
-    return ['post' => $post];
+    $category = Category::create($request->all()); 
+    return ['category' => $category];
   }
 
   /**
@@ -48,8 +46,8 @@ class PostController extends Controller
    */
   public function show($id)
   {
-    $post = Post::findOrFail($id);
-    return ['post' => $post];
+    $category = Category::with('posts')->findOrFail($id);
+    return ['category' => $category];
   }
 
   /**
@@ -61,12 +59,14 @@ class PostController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $post = Post::findOrFail($id);
-    $this-> validate($request, [
-      'title' => 'string',
+    $category = Category::findOrFail($id);
+    $this->validate($request, [
+      'name' => 'string',
+      'description' => 'string',
     ]);
-    $post->update($request->all());
-    return ['post' => $post];
+
+    $category->update($request->all());
+    return ['category' => $category];
   }
 
   /**
@@ -77,8 +77,8 @@ class PostController extends Controller
    */
   public function destroy($id)
   {
-    $post = Post::findOrFail($id);
-    $post->delete();
-    return ['status' => 'Post deleted'];
+    $category = Category::findOrFail($id);
+    $category->delete();
+    return ['status' => 'Category deleted'];
   }
 }

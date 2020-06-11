@@ -11,7 +11,10 @@ class Mentee extends Model
 {
 
   protected $casts = [
-    'mentorship_areas' => 'json'
+    "out_of_field_mentored" => "boolean",
+    "field_mentored" => "boolean",
+    "mentored_before" => "boolean",
+    "graduated" => "boolean"
   ];
 
   protected $fillable = [
@@ -39,7 +42,6 @@ class Mentee extends Model
     'postCode',
     'source',
     'mentored_before',
-    'explain',
     'pic',
     'phone_number',
     'mentorship_areas',
