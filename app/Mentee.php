@@ -33,8 +33,6 @@ class Mentee extends Model
     'qualification',
     'graduated',
     'why_do_you_want_to_be_mentored',
-    'field_mentored',
-    'out_of_field_mentored',
     'bio',
     'country',
     'city',
