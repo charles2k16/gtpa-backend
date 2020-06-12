@@ -18,10 +18,14 @@ Route::group(['middleware' => ['json.response']], function () {
 
   Route::post('login', 'Auth\AuthController@login');
   Route::post('register', 'Auth\AuthController@register');
+
+  Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify')->middleware('signed');
+  Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
   Route::resource('mentors', 'Mentor\MentorController', ['only' => ['index', 'show']]);
 
   Route::middleware('auth:api')->group(function () {
-    Route::get('currentuser', 'Auth\AuthController@currentuser');
+    Route::get('currentuser', 'Auth\AuthController@currentuser')->middleware('verified');
     Route::get('logout','Auth\AuthController@logout');
   });
 

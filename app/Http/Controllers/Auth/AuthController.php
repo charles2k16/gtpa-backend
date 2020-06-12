@@ -17,6 +17,7 @@ class AuthController extends Controller
    * @param Request $request
    * @return \Illuminate\Http\JsonResponse
    */
+  
   public function register(Request $request) {
     $this->validate($request, [
       'name' => 'required|min:3',
@@ -32,11 +33,12 @@ class AuthController extends Controller
       'password' =>  Hash::make($request['password'])
     ]);
 
-    $token = $user->createToken('Gtpa')->accessToken;
+    $user->sendEmailVerificationNotification();
 
-    return response()->json(['access_token' => $token], 200);
+    // $token = $user->createToken('Gtpa')->accessToken;
+
+    return response()->json(['success' => 'Email verification sent'], 200);
   }
-
 
    /**
    * Handles Login Request
@@ -59,7 +61,6 @@ class AuthController extends Controller
     }
   }
 
-
     /**
    * Returns Authenticated User Details
    *
@@ -70,8 +71,6 @@ class AuthController extends Controller
     $user = Auth::user();
     return response()->json(['user' => $user], 200);
   }
-
-
 
    /**
    * Handles Logout Request

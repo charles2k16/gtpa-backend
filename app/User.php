@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\VerifyEmail;
 use Laravel\Passport\HasApiTokens;
 use App\Mentor;
 use App\Mentee;
 use App\Message;
 use App\Post;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
   use HasApiTokens, Notifiable;
 
@@ -28,6 +29,11 @@ class User extends Authenticatable
   protected $fillable = [
     'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic', 'last_active', 'suspended'
   ];
+
+  public function sendEmailVerificationNotification()
+  {
+    $this->notify(new VerifyEmail);
+  }
 
   public function isAdmin() {
     return $this->type == User::ADMIN_USER;
