@@ -57,7 +57,7 @@ class AuthController extends Controller
       $token = auth()->user()->createToken('Gtpa')->accessToken;
       return response()->json(['access_token' => $token], 200);
     } else {
-      return response()->json(['error' => 'UnAuthorised'], 401);
+      return response()->json(['error' => 'UnAuthenticated'], 401);
     }
   }
 
