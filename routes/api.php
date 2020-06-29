@@ -22,7 +22,10 @@ Route::group(['middleware' => ['json.response']], function () {
   Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify')->middleware('signed');
   Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+  // public routes
   Route::resource('mentors', 'Mentor\MentorController', ['only' => ['index', 'show']]);
+  Route::resource('events', 'Event\EventController', ['only' => ['index', 'show']]);
+  Route::resource('posts', 'Post\PostController', ['only' => ['index', 'show']]);
 
   Route::middleware('auth:api')->group(function () {
     Route::get('currentuser', 'Auth\AuthController@currentuser')->middleware('verified');
@@ -65,8 +68,11 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::resource('requests', 'MentorRequest\MentorRequestController', ['except' => ['create', 'edit']]);
 
     // posts
-    Route::resource('posts', 'Post\PostController', ['except' => ['create', 'edit']]);
+    Route::resource('posts', 'Post\PostController', ['only' => ['update', 'destroy', 'store']]);
 
+    // events
+    Route::resource('events', 'Event\EventController', ['only' => ['update', 'destroy', 'store']]);
+  
     // category
     Route::resource('categories', 'Category\CategoryController', ['except' => ['create', 'edit']]);
 

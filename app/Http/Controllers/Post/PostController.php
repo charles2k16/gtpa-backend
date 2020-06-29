@@ -16,7 +16,7 @@ class PostController extends Controller
   public function index()
   {
     $posts = Post::all();
-    return ['posts' => $posts];
+    return ['posts' => $posts, 'total' => $posts->count()];
   }
 
   /**

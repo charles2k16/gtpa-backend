@@ -17,7 +17,7 @@ class UserController extends Controller
   public function index()
   {
     $users = User::all();
-    return ['users' => $users];
+    return ['total' => $users->count(), 'users' => $users];
   }
   
   /**
