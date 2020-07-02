@@ -55,20 +55,12 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasMany(Post::class);
   }
 
-  public function profile() {
+  public function mentee () {
+    return $this->hasOne(Mentee::class);
+  }
 
-    switch ($this->type) {
-      case User::MENTEE:
-        return $this->hasOne(Mentee::class);
-        break;
-
-      case User::MENTOR:
-        return $this->hasOne(Mentor::class);
-        break;
-
-      default:
-        break;
-    }
+  public function mentor () {
+    return $this->hasOne(Mentor::class);
   }
 
   /**
