@@ -20,6 +20,7 @@ class Mentee extends Model
   protected $fillable = [
     'user_id',
     'age',
+    'name',
     'firstName',
     'lastName',
     'address',
@@ -39,8 +40,8 @@ class Mentee extends Model
     'postCode',
     'source',
     'mentored_before',
-    'pic',
     'phone_number',
+    'pic',
     'mentorship_areas',
   ];
 

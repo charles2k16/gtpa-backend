@@ -14,13 +14,14 @@ class MentorRequest extends Model
 
 
   protected $casts = [
-    'mentorship_areas' => 'json'
+    "feedbackSent" => "boolean"
   ];
   
   protected $fillable = [
     'description',
     'location',
     'duration',
+    'feedbackSent',
     'status',
     'mentor_id',
     'mentee_id',

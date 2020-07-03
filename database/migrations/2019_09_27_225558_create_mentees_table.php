@@ -40,7 +40,7 @@ class CreateMenteesTable extends Migration
       $table->string('state',50);
       $table->string('postCode');
       $table->string('if_yes_explain');
-      $table->string('pic');
+      $table->string('pic')->nullable()->change();
       $table->integer('phone_number');
       $table->string('mentorship_areas');
       $table->timestamps();
