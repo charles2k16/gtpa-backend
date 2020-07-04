@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-      $events = Event::all();
+      $events = Event::orderBy('created_at', 'desc')->get();
       return ['total' => $events->count(), 'events' => $events];
     }
 
@@ -32,10 +32,16 @@ class EventController extends Controller
         'content' => 'required',
       ];
       $this->validate($request, $rules);
+
+      if ($request->image !== null) {
+ 
+          $name = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+          \Image::make($request->image)->save(public_path('img/event/').$name);
+    
+          $request->merge(['image' => url('/').'/img/event/'.$name]);
+      }
   
-      $data = $request->all();
-  
-      $event = Event::create($data);
+      $event = Event::create($request->all());
       return ['event' => $event];
     }
 
@@ -64,6 +70,16 @@ class EventController extends Controller
       $this-> validate($request, [
         'title' => 'string',
       ]);
+
+      $currentPhoto = $event->image;
+
+      if ($request->image !== $currentPhoto) {
+        $name = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+        \Image::make($request->image)->save(public_path('img/event/').$name);
+  
+        $request->merge(['image' => url('/').'/img/event/'.$name]);
+      }
+
       $event->update($request->all());
       return ['event' => $event];
     }

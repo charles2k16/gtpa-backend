@@ -15,8 +15,8 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::with('category', 'user')->get();
-    return ['posts' => $posts, 'total' => $posts->count()];
+    $posts = Post::with('category', 'user')->orderBy('created_at', 'desc')->get();
+    return ['total' => $posts->count(), 'posts' => $posts];
   }
 
   /**
@@ -34,9 +34,15 @@ class PostController extends Controller
     ];
     $this->validate($request, $rules);
 
-    $data = $request->all();
 
-    $post = Post::create($data);
+    if ($request->media !== null) {
+      $name = time().'.' . explode('/', explode(':', substr($request->media, 0, strpos($request->media, ';')))[1])[1];
+      \Image::make($request->media)->save(public_path('img/posts/').$name);
+
+      $request->merge(['media' => url('/').'/img/posts/'.$name]);
+    }
+
+    $post = Post::create($request->all());
     return ['post' => $post];
   }
 
@@ -65,6 +71,20 @@ class PostController extends Controller
     $this-> validate($request, [
       'title' => 'string',
     ]);
+
+    $currentPhoto = $post->media;
+
+    if ($request->media !== $currentPhoto) {
+      $name = time().'.' . explode('/', explode(':', substr($request->media, 0, strpos($request->media, ';')))[1])[1];
+      \Image::make($request->media)->save(public_path('img/posts/').$name);
+
+      $request->merge(['media' => url('/').'/img/posts/'.$name]);
+
+      if(file_exists($currentPhoto)) {
+        @unlink($currentPhoto);
+      }
+    }
+
     $post->update($request->all());
     return ['post' => $post];
   }

@@ -17,7 +17,7 @@ class MentorRequestController extends Controller
   {
     $mentorRequest = MentorRequest::with('mentee', 'mentor')->get();
     // with('mentee')->get()
-    return ['requests' => $mentorRequest];
+    return ['total'=>$mentorRequest->count(), 'requests' => $mentorRequest];
   }
 
   /**
