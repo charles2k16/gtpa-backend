@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\User;
+use App\Mentor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,9 +14,12 @@ class UserMentorController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index(User $user)
+  public function index($id)
   {
-    $users = $user->profile()->with('user')->get();
-    return ['user' => $users];
+    $user = User::with('mentor')->findOrFail($id);
+    $mentorId = $user->mentor->id;
+    $mentor = Mentor::with('user')->findOrFail($mentorId);
+
+    return ['mentor' => $mentor];
   }
 }

@@ -16,7 +16,7 @@ class MenteeController extends Controller
   public function index()
   {
     $mentees = Mentee::with('user')->get();
-    return ['mentees' => $mentees];
+    return ['total' => $mentees->count(), 'mentees' => $mentees];
   }
 
   /**

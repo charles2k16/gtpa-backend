@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\User;
+use App\Mentee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,9 +14,12 @@ class UserMenteeController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index(User $user)
+  public function index($id)
   {
-    $users = $user->profile()->with('user')->get();
-    return ['user' => $users];
+    $user = User::with('mentee')->findOrFail($id);
+
+    $menteeId = $user->mentee->id;
+    $mentee = Mentee::with('user')->findOrFail($menteeId);
+    return ['mentee' => $mentee];
   }
 }
