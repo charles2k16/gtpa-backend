@@ -33,11 +33,11 @@ class AuthController extends Controller
       'password' =>  Hash::make($request['password'])
     ]);
 
-    $user->sendEmailVerificationNotification();
+    // $user->sendEmailVerificationNotification();
 
-    // $token = $user->createToken('Gtpa')->accessToken;
+    $token = $user->createToken('Gtpa')->accessToken;
 
-    return response()->json(['success' => 'Email verification sent'], 200);
+    return response()->json(['access_token' => $token], 200);
   }
 
    /**

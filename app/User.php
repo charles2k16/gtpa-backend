@@ -12,7 +12,7 @@ use App\Mentee;
 use App\Message;
 use App\Post;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
   use HasApiTokens, Notifiable;
 
@@ -30,10 +30,10 @@ class User extends Authenticatable implements MustVerifyEmail
     'name', 'email', 'requests', 'sent_a_request', 'password', 'type', 'pic', 'last_active', 'suspended'
   ];
 
-  public function sendEmailVerificationNotification()
-  {
-    $this->notify(new VerifyEmail);
-  }
+  // public function sendEmailVerificationNotification()
+  // {
+  //   $this->notify(new VerifyEmail);
+  // }
 
   public function isAdmin() {
     return $this->type == User::ADMIN_USER;
