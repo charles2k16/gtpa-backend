@@ -15,7 +15,7 @@ class MentorRequestController extends Controller
    */
   public function index()
   {
-    $mentorRequest = MentorRequest::with('mentee', 'mentor')->get();
+    $mentorRequest = MentorRequest::with('mentee', 'mentor')->orderBy('created_at', 'desc')->get();
     // with('mentee')->get()
     return ['total'=>$mentorRequest->count(), 'requests' => $mentorRequest];
   }

@@ -14,9 +14,9 @@ class UserController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(User $user)
   {
-    $users = User::all();
+    $users = $user->orderBy('created_at', 'desc')->get();
     return ['total' => $users->count(), 'users' => $users];
   }
   

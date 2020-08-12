@@ -16,7 +16,7 @@ class MentorController extends Controller
    */
   public function index()
   {
-    $mentors = Mentor::with('user')->get();
+    $mentors = Mentor::with('user')->orderBy('created_at', 'desc')->get();
     return ['total' => $mentors->count(), 'mentors' => $mentors];
   }
 

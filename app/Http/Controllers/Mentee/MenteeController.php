@@ -15,7 +15,7 @@ class MenteeController extends Controller
    */
   public function index()
   {
-    $mentees = Mentee::with('user')->get();
+    $mentees = Mentee::with('user')->orderBy('created_at', 'desc')->get();
     return ['total' => $mentees->count(), 'mentees' => $mentees];
   }
 

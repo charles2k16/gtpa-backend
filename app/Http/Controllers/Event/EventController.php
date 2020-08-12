@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-      $events = Event::orderBy('created_at', 'desc')->get();
+      $events = Event::orderBy('created_at', 'desc')->orderBy('created_at', 'desc')->get();
       return ['total' => $events->count(), 'events' => $events];
     }
 

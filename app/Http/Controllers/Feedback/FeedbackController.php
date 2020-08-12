@@ -15,7 +15,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-      $feedbacks = Feedback::with('mentee', 'mentor')->get();
+      $feedbacks = Feedback::with('mentee', 'mentor')->orderBy('created_at', 'desc')->get();
       return ['feedbacks' => $feedbacks];
     }
 
