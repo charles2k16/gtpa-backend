@@ -20,6 +20,7 @@ class CreateMentorRequestsTable extends Migration
       $table->string('duration');
       $table->string('location');
       $table->string('status')->index()->default(MentorRequest::PENDING_STATUS);
+      $table->boolean('feedbackSent')->default(false);
       $table->integer('mentor_id')->index()->nullable();
       $table->integer('mentee_id')->index()->nullable();
       $table->date('commencement_date');

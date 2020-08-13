@@ -26,6 +26,7 @@ class Mentee extends Model
     'address',
     'email',
     'title',
+    'if_yes_explain',
     'occupation',
     'organization',
     'education',

@@ -35,7 +35,7 @@ class CreateMentorsTable extends Migration
       $table->string('postCode');
       $table->string('source');
       $table->boolean('mentored_before')->default(false);
-      $table->string('if_yes_explain');
+      $table->string('if_yes_explain')->nullable();
       $table->boolean('support_on_how_to_mentor')->default(false);
       $table->string('why_do_you_want_to_mentor');
       $table->integer('phone_number');
