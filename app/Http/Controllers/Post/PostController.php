@@ -15,7 +15,7 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::with('category', 'user')->orderBy('created_at', 'desc')->get();
+    $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
     return ['total' => $posts->count(), 'posts' => $posts];
   }
 

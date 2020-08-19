@@ -9,7 +9,7 @@ use App\Category;
 class Post extends Model
 {
   protected $fillable = [
-    'title', 'sub_content', 'content', 'user_id', 'category_id', 'media'
+    'title', 'sub_content', 'content', 'user_id', 'category', 'media'
   ];
 
   public function user () {
